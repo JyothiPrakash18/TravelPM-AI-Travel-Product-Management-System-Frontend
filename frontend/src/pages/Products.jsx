@@ -22,16 +22,19 @@ export default function Products() {
   };
 
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-semibold text-gray-900">Products</h2>
-        <Link to="/products/new" className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">
-          + New Product
-        </Link>
+    // ✅ p-4 sm:p-8 — tighter padding on mobile
+    <div className="p-4 sm:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">Products</h2>
+      <Link to="/products/new"
+        className="self-start sm:self-auto px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 whitespace-nowrap">
+        + New Product
+      </Link>
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <table className="w-full text-sm">
+      {/* ✅ Table scrolls horizontally on mobile */}
+      <div className="bg-white rounded-xl border border-gray-200 overflow-x-auto">
+        <table className="w-full text-sm min-w-[640px]">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               {['Name', 'Destination', 'Category', 'Price', 'Valid Until', 'Status', ''].map(h => (
@@ -48,8 +51,8 @@ export default function Products() {
                 <td className="px-4 py-3 font-medium text-gray-900">{p.product_name}</td>
                 <td className="px-4 py-3 text-gray-600">{p.destination}</td>
                 <td className="px-4 py-3 text-gray-600">{p.category}</td>
-                <td className="px-4 py-3 text-gray-900">LKR {Number(p.price).toLocaleString()}</td>
-                <td className="px-4 py-3 text-gray-600">{new Date(p.valid_until).toLocaleDateString()}</td>
+                <td className="px-4 py-3 text-gray-900 whitespace-nowrap">LKR {Number(p.price).toLocaleString()}</td>
+                <td className="px-4 py-3 text-gray-600 whitespace-nowrap">{new Date(p.valid_until).toLocaleDateString()}</td>
                 <td className="px-4 py-3">
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusColor[p.status] || 'bg-gray-100 text-gray-600'}`}>
                     {p.status}
