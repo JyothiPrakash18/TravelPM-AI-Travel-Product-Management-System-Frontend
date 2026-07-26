@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({ baseURL: '/api' });
-
+console.log(api);
 export const getProducts = () => api.get('/products');
 export const getDashboard = () => api.get('/products/dashboard');
 export const getProduct = (id) => api.get(`/products/${id}`);
