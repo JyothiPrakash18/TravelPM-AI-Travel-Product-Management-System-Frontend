@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://travelpm-ai-travel-product-management-4am3.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
